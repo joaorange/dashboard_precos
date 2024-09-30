@@ -65,14 +65,14 @@ def plot_data(grouped_data, selected_variable):
     # Anotando os pontos com ajuste de posição
     for index, row in grouped_data.iterrows():
         plt.text(row['data'], row[selected_variable] + (index % 2) * 0.5, f'{row[selected_variable]:.2f}',
-                 horizontalalignment='left', size=16, color='black', weight='semibold')
+                 horizontalalignment='left', size=24, color='black', weight='semibold')
 
-    plt.title(f'{selected_variable} de Perfume (extratos) Importado para São Paulo', fontsize=30, weight='bold')
-    plt.xlabel('Data', fontsize=26)
-    plt.ylabel(selected_variable, fontsize=26)
+    plt.title(f'{selected_variable} de Perfume (extratos) Importado para São Paulo', fontsize=40, weight='bold')
+    plt.xlabel('Data', fontsize=34)
+    plt.ylabel(selected_variable, fontsize=34)
     plt.xticks(rotation=45)
-    plt.xticks(fontsize=22, rotation=45)
-    plt.yticks(fontsize=22)
+    plt.xticks(fontsize=30, rotation=45)
+    plt.yticks(fontsize=30)
     plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
     plt.grid(color='grey', linestyle='--', linewidth=0.7, alpha=0.7)
