@@ -62,7 +62,7 @@ def plot_data(grouped_data, selected_variable):
     for index, row in grouped_data.iterrows():
         plt.text(row['data'], row[selected_variable] + 0.5, f'{row[selected_variable]:.2f}',
                  horizontalalignment='left', size='medium', color='black', weight='semibold')
-    plt.title(f'{selected_variable} de Perfume (extratos) por Ano e Mês', fontsize=25)
+    plt.title(f'{selected_variable} de Importação de Perfume (extratos) por Ano e Mês para São Paulo', fontsize=25)
     plt.xlabel('Data', fontsize=14)
     plt.ylabel(selected_variable, fontsize=14)
     plt.xticks(rotation=45)
