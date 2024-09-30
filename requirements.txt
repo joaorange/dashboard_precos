@@ -1,9 +1,9 @@
 currency_converter==0.5.5
-CurrencyConverter==0.17.31
 matplotlib>=3.4.0
 numpy>=1.21.0
 pandas==1.1.5
 requests==2.27.1
 seaborn==0.11.2
-streamlit==1.10.0
-setuptools==75.1.0
+streamlit
+setuptools
+
