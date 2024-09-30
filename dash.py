@@ -54,22 +54,33 @@ def create_grouped_data(df):
     df['data'] = pd.to_datetime(df['CO_ANO'].astype(str) + '-' + df['CO_MES'].astype(str) + '-01')
     return df.groupby('data').sum().reset_index()
 
-# Gráfico de linhas para mostrar os preços
+
 def plot_data(grouped_data, selected_variable):
-    plt.figure(figsize=(16, 10))
+    plt.figure(figsize=(20, 10))
     sns.set(style="whitegrid")
+
+    # Gráfico de linha
     sns.lineplot(data=grouped_data, x='data', y=selected_variable, marker='o', color='lightblue', linewidth=2.5)
+
+    # Anotando os pontos com ajuste de posição
     for index, row in grouped_data.iterrows():
-        plt.text(row['data'], row[selected_variable] + 0.5, f'{row[selected_variable]:.2f}',
-                 horizontalalignment='left', size='medium', color='black', weight='semibold')
-    plt.title(f'{selected_variable} de Importação de Perfume (extratos) por Ano e Mês para São Paulo', fontsize=23)
-    plt.xlabel('Data', fontsize=14)
-    plt.ylabel(selected_variable, fontsize=14)
+        plt.text(row['data'], row[selected_variable] + (index % 2) * 0.5, f'{row[selected_variable]:.2f}',
+                 horizontalalignment='left', size=20, color='black', weight='semibold')
+
+    plt.title(f'{selected_variable} de Perfume (extratos) Importado para São Paulo', fontsize=30, weight='bold')
+    plt.xlabel('Data', fontsize=26)
+    plt.ylabel(selected_variable, fontsize=26)
     plt.xticks(rotation=45)
+    plt.xticks(fontsize=22, rotation=45)
+    plt.yticks(fontsize=22)
+    plt.gca().xaxis.set_major_locator(mdates.MonthLocator())
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
-    plt.grid()
+    plt.grid(color='grey', linestyle='--', linewidth=0.7, alpha=0.7)
     plt.tight_layout()
+
+    # Exibindo o gráfico
     st.pyplot(plt)
+
 
 def main():
     url_23 = 'https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/IMP_2023.csv'
@@ -107,3 +118,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
