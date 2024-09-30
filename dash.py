@@ -65,7 +65,7 @@ def plot_data(grouped_data, selected_variable):
     # Anotando os pontos com ajuste de posição
     for index, row in grouped_data.iterrows():
         plt.text(row['data'], row[selected_variable] + (index % 2) * 0.5, f'{row[selected_variable]:.2f}',
-                 horizontalalignment='left', size=20, color='black', weight='semibold')
+                 horizontalalignment='left', size=17, color='black', weight='semibold')
 
     plt.title(f'{selected_variable} de Perfume (extratos) Importado para São Paulo', fontsize=30, weight='bold')
     plt.xlabel('Data', fontsize=26)
